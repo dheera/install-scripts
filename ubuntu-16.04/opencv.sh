@@ -1,6 +1,4 @@
 #!/bin/bash
-#depend robby-base robby-cuda
-
 # Compiles OpenCV 3.1.0 with python2 and python3 bindings.
 
 sudo apt-get update && sudo apt-get -y upgrade
