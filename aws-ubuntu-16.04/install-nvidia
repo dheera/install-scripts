@@ -19,8 +19,9 @@ sudo dpkg -i cuda*
 sudo apt-get update
 sudo apt-get install -y cuda
 
-# because cuda isn't intelligent enough to do what is obvious
+# because cuda isn't intelligent enough to do what is obvious; they want you to fail
+# the first time when you try to compile things
 echo "export LD_LIBRARY_PATH=/usr/local/cuda/lib" >> ~/.bashrc
-echo "export PATH=$PATH:/usr/local/cuda/bin" >> ~/.bashrc
+echo "export PATH=\$PATH:/usr/local/cuda/bin" >> ~/.bashrc
 
 sudo reboot
