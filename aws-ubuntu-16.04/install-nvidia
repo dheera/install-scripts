@@ -1,0 +1,26 @@
+#!/bin/bash
+
+sudo apt-get update
+sudo apt-get upgrade
+
+# because things sometimes fail without these and forums say we need these
+sudo apt-get install -y build-essential linux-image-extra-virtual linux-source linux-headers-`uname -r`
+
+# because amazon isn't intelligent enough to provide GPU drivers with GPU instances by default
+sudo apt-get install -y nvidia-340
+
+echo "blacklist nouveau\nblacklist lbm-nouveau\noptions nouveau modeset=0\nalias nouveau off\nalias lbm-nouveau off\n" > /tmp/blacklist-nouveau.conf
+sudo mv /tmp/blacklist-nouveau.conf /etc/modprobe.d/blacklist-nouveau.conf
+echo options nouveau modeset=0 | sudo tee -a /etc/modprobe.d/nouveau-kms.conf
+
+# because nvidia isn't intelligent enough to install what everyone obviously needs
+wget http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/cuda-repo-ubuntu1604_8.0.44-1_amd64.deb
+sudo dpkg -i cuda*
+sudo apt-get update
+sudo apt-get install -y cuda
+
+# because cuda isn't intelligent enough to do what is obvious
+echo "export LD_LIBRARY_PATH=/usr/local/cuda/lib" >> ~/.bashrc
+echo "export PATH=$PATH:/usr/local/cuda/bin" >> ~/.bashrc
+
+sudo reboot
