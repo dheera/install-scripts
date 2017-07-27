@@ -6,5 +6,4 @@ sudo apt-get update
 sudo apt-get install -y ros-kinetic-desktop-full python-pip python3-pip
 sudo pip install rospkg catkin_pkg
 sudo pip3 install rospkg catkin_pkg
-echo "alias ros='source /opt/ros/kinetic/setup.bash'" >> ~/.bashrc
 
