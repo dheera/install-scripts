@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# Why installing Bazel is so hard
+# - Tensorflow thinks version 0.11.1 < 0.5.4 (mathematically-ish correct, software-wise incorrect)
+#   and refuses to compile stuff, so old versions are needed
+# - The repository doesn't maintain old versions
+
+BAZEL_VERSION=0.5.4
+
+sudo apt-get install openjdk-8-jdk
+
+sudo apt-get install -y --no-install-recommends \
+   bash-completion \
+   g++ \
+   zlib1g-dev \
+
+curl -LO "https://github.com/bazelbuild/bazel/releases/download/${BAZEL_VERSION}/bazel_${BAZEL_VERSION}-linux-x86_64.deb" \
+   && sudo dpkg -i bazel_*.deb

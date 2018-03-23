@@ -1,5 +1,13 @@
 #!/bin/bash
 
+# #$*&($! why isn't installing something as simple as this?
+
+# sudo apt-add-repository ppa:facebook/caffe2
+# sudo apt-get update
+# sudo apt-get install caffe2
+
+# i wish, but instead we need this:
+
 sudo apt-get update
 sudo apt-get install -y --no-install-recommends \
       build-essential \
