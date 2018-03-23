@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# Why installing pycuda sucks
+# - trying to pip install it complains that it couldn't find cuda.h
+# - nVidia insists on putting cuda in /usr/local/cuda instead of /usr
+
+# for python2
+sudo bash -c 'export LD_LIBRARY_PATH=/usr/local/cuda/lib:/usr/local/cuda/lib64:/usr/local/cuda/extras/CUPTI/lib64/:\$LD_LIBRARY_PATH;export PATH=/usr/local/cuda/bin:\$PATH;pip install pycuda'
+
+# for python3
+sudo bash -c 'export LD_LIBRARY_PATH=/usr/local/cuda/lib:/usr/local/cuda/lib64:/usr/local/cuda/extras/CUPTI/lib64/:\$LD_LIBRARY_PATH;export PATH=/usr/local/cuda/bin:\$PATH;pip3 install pycuda'
+
